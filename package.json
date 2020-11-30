@@ -1,7 +1,8 @@
 {
-  "name": "order-management-frontend",
+  "name": "order-managment-frontend",
   "version": "0.1.0",
   "private": true,
+  "live": "nodemon server.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -12,7 +13,11 @@
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vxe-table": "^3.0.3",
-    "xe-utils": "^3.0.2"
+    "xe-utils": "^3.0.2",
+    "vue-loader": "^15.9.5",
+    "axios": "^0.21.0",
+    "moment": "^2.29.1",
+    "vuex": "^2.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
