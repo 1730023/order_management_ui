@@ -9,7 +9,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home
   },
   {
@@ -33,7 +33,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes: routes,
+  mode: "history"
 })
 
 export default router

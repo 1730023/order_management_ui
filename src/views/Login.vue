@@ -31,7 +31,7 @@
         </div>
         <div class="col-sm-4">
           <h3 style="text-align:left;">Sign in</h3>
-          <form>
+          <div>
             <div>
               <label for="uname">
                 <p
@@ -63,7 +63,7 @@
             <button
               type="submit"
               @click="loginFun()" class="btn btn-secondary w-25 float-right">sign in</button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import { EventBus } from './event-bus';
 import axios from 'axios'
 export default {
   name: "Login",
@@ -78,19 +79,17 @@ export default {
     return{
       email: "",
       password: "",
-      baseUrl: "http://localhost:8088"
+      baseUrl: "http://localhost:8088",
     }
   },
   created(){
-
+    
   },
   computed: {
 
   },
   methods: {
     loginFun(){
-      console.log(this.email);
-      console.log(this.password);
       var _obj = this;
       return axios
         .post(`${this.baseUrl}/users`,{
@@ -98,21 +97,21 @@ export default {
           password: this.password,
         },{
           headers : {
-              'Accept': 'application/json',
-              'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+            'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
           }
         })
         .then(response => {
-          console.log("status", response.data.status)
           if (response.data.status){
              _obj.$router.push('dashboard');
+             
              if(this.email === "David_Lee"){
-               localStorage.setItem("username", this.email)
+                localStorage.setItem("username", this.email)
              }else if(this.email === "Laura_Smith"){
                 localStorage.setItem("username", this.email)
              }else if(this.email === "Matthew_Vance"){
                 localStorage.setItem("username", this.email)
              }
+             EventBus.$emit('logged', 'User logged')
 
           }else{
             alert('Inavid username and password!')

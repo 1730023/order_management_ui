@@ -6,11 +6,16 @@ import XEUtils from 'xe-utils'
 import enUS from 'vxe-table/lib/locale/lang/en-US';
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI);
 
 Vue.use(VXETable)
 VXETable.setup({
   i18n: (key) => XEUtils.get(enUS, key)
 })
+
 
 
 Vue.config.productionTip = false
